@@ -7,17 +7,6 @@ describe Smart do
     @sms = Smart::REST::SMS.new
   end
   
-  def valid_sms_data
-    {"outboundSMSMessageRequest" => 
-      {"address" => ["tel:+639176230655"], 
-        "senderAddress" => config_file['access_code'].to_s,
-        "outboundSMSTextMessage" => {
-          "message" => "Test Message"
-        }
-      }
-    }
-  end
-
   def client
     @client ||= initialize_rest_client 
   end
@@ -36,7 +25,7 @@ describe Smart do
 
   it 'should not allow for invalid sp_password' do
     begin
-      response = client.send_sms(valid_sms_data)
+      response = client.send_sms("+09165230655", "Test Data")
     rescue Exception => e
       e.message.must_equal Smart::REST::Response.new('SVC0901').to_s
     end

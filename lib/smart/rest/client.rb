@@ -36,12 +36,23 @@ module Smart
         })
       end
       
-      def send_sms(args = {})
-        request = setup_connection(args)
+      def send_sms(mobile, message)
+        request = setup_connection(valid_sms_data(mobile, message).to_json)
         response = connect(request)
       end
       
       private
+      
+      def valid_sms_data(mobile, message)
+        {"outboundSMSMessageRequest" => 
+          {"address" => ["tel:#{mobile}"], 
+            "senderAddress" => self.access_code,
+            "outboundSMSTextMessage" => {
+              "message" => "#{message}"
+            }
+          }
+        }
+      end
       
       def setup_sms_outbound_endpoint
         "https://#{self.host}/1/smsmessaging/outbound/#{self.access_code}/requests"
@@ -60,7 +71,7 @@ module Smart
         @http.cert_store = store
         
         request = Net::HTTP::Post.new(uri.request_uri, initheader = headers)
-        request.body = args.to_json
+        request.body = args
         request
       end
       
