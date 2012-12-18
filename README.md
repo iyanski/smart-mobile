@@ -1,6 +1,3 @@
-smart-mobile
-============
-
 #Smart Mobile API
 
 A ruby gem for consuming Smart Mobile API (currently supports SMS only).
