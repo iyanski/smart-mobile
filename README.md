@@ -14,9 +14,9 @@ A ruby gem for consuming Smart Mobile API (currently supports SMS only).
     $ gem install smart-mobile
 
 ## Configuration
-The configuration below is provided by Smart Devnet. Apply for access (http://www.smart.com.ph/developer)
+The configuration below will be provided by Smart Devnet. Apply for access (http://www.smart.com.ph/developer)
   
-    Smart::REST::Client.configure do |config|
+    client = Smart::REST::Client.configure do |config|
       config.sp_id = '<sp_id>'
       config.sp_password = '<sp_encrypted_password>'
       config.service_id = '<service_id>'
@@ -48,4 +48,4 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ## Acknowledgements
 
-Authored by: <a href="http://iantusil.com" target="_blank">Ian Bert TUsil</a>
+Authored by: <a href="http://iantusil.com" target="_blank">Ian Bert Tusil</a>
