@@ -7,8 +7,8 @@ Gem::Specification.new do |s|
   s.date        = '2012-11-24'
   s.email       = 'me@iantusil.com'
   
-  s.summary     = "A gem for consuming Smart Mobile API"
-  s.description = "A gem for consuming Smart Mobile API (currently supports SMS only)."
+  s.summary     = "A ruby gem for consuming Smart Mobile API"
+  s.description = "A ruby gem for consuming Smart Mobile API (currently supports SMS only)."
   s.author      = "Ian Bert Tusil"
   s.homepage    = 'http://www.smart.com.ph/developer'
   s.license     = 'MIT'
