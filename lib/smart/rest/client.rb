@@ -31,8 +31,8 @@ module Smart
 
       def headers
         HTTP_HEADERS.merge! ({
-          'X-WSSE' => %{ "UsernameToken Username="#{self.sp_id}",PasswordDigest="#{self.sp_password}",Nonce="#{self.nonce}", Created="#{self.creation_time}"}, 
-          'X-RequestHeader' => %{ "request TransId="",ServiceId="#{self.service_id}" }
+          'X-WSSE' => %{ UsernameToken Username="#{self.sp_id}",PasswordDigest="#{self.sp_password}",Nonce="#{self.nonce}", Created="#{self.creation_time}"}, 
+          'X-RequestHeader' => %{ request TransId="",ServiceId="#{self.service_id}"}
         })
       end
       
@@ -63,14 +63,11 @@ module Smart
         @http = Net::HTTP.new(uri.host, uri.port)
         @http.use_ssl = true
         @http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-        @http.open_timeout = 3 # in seconds
-        @http.read_timeout = 3 # in seconds
         
         store = OpenSSL::X509::Store.new
         store.add_cert(OpenSSL::X509::Certificate.new(File.read(self.path_to_cert)))
         @http.cert_store = store
-        
-        request = Net::HTTP::Post.new(uri.request_uri, initheader = headers)
+        request = Net::HTTP::Post.new(uri.request_uri, headers)
         request.body = args
         request
       end
