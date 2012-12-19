@@ -23,7 +23,7 @@ describe Smart do
     end
   end
 
-  it 'should not allow for invalid sp_password' do
+  it 'should be able to send SMS' do
     begin
       response = client.send_sms("+639176004693", "Test Data")
       response.code.must_equal "201"
@@ -32,8 +32,8 @@ describe Smart do
     end
   end
   
-  it 'should have a valid certificate' do
-
+  it 'should be able t send SMS using SMS Class' do
+    #puts @sms.send_sms("+639176004693", "Test Data")
   end
   
   it 'should try to retry up to the max number of retry limited' do

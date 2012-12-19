@@ -72,7 +72,7 @@ module Smart
         "SVC0006" => "Invalid group",
         "SVC0007" => "Invalid charging information",
         "SVC0008" => "Overlapping Criteria",
-        "SVC0900" => "Authentication failed due to user-related causes"
+        "SVC0900" => "Authentication failed due to user-related causes",
         "SVC0901" => "Sp password is not accepted!",
         "SVC0902" => "Content is illegal, so it is rejected by the content filter module",
         "SVC0903" => "Message route error",
@@ -108,7 +108,6 @@ module Smart
       end
       
       def to_s
-        #"#{self.response_code} - #{msg}"
         msg
       end
       
