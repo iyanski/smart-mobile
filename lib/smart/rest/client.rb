@@ -37,6 +37,8 @@ module Smart
       end
       
       def send_sms(mobile, message)
+        raise ArgumentError, "Number is blank" if mobile.empty?
+        raise ArgumentError, "Message is blank" if message.empty?
         request = setup_connection(valid_sms_data(mobile, message).to_json)
         response = connect(request)
       end

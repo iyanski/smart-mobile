@@ -25,7 +25,7 @@ describe Smart do
 
   it 'should not allow for invalid sp_password' do
     begin
-      response = client.send_sms("+09165230655", "Test Data")
+      response = client.send_sms("+639176004693", "Test Data")
       response.code.must_equal "201"
     rescue Exception => e
       e.message.must_equal Smart::REST::Response.new('SVC0901').to_s
